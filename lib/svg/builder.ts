@@ -184,14 +184,20 @@ export function calculateRank(stats: {
   return "D";
 }
 
-export function formatNumber(num: number): string {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + "M";
+export function formatNumber(num?: number | null): string {
+  if (num === undefined || num === null || Number.isNaN(Number(num))) {
+    return "0";
   }
-  if (num >= 1000) {
-    return (num / 1000).toFixed(1) + "K";
+
+  const n = Number(num);
+
+  if (n >= 1000000) {
+    return (n / 1000000).toFixed(1) + "M";
   }
-  return num.toString();
+  if (n >= 1000) {
+    return (n / 1000).toFixed(1) + "K";
+  }
+  return n.toString();
 }
 
 export function truncateText(text: string, maxLength: number): string {
