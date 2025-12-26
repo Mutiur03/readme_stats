@@ -58,8 +58,8 @@ export async function GET(request: NextRequest) {
     return new NextResponse(svg, {
       headers: {
         "Content-Type": "image/svg+xml",
-        // "Cache-Control":
-        //   "public, s-maxage=86400, stale-while-revalidate=172800",
+        "Cache-Control":
+          "public, s-maxage=86400, stale-while-revalidate=172800",
       },
     });
   } catch (error) {
